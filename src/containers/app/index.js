@@ -1,15 +1,13 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Dashboard from '../dashboard'
+import Country from '../country'
 
 const App = () => (
   <div>
-    <header>
-      <Link to="/">Dashboard</Link>
-    </header>
-
     <main>
       <Route exact path="/" component={Dashboard} />
+      <Route exact path="/country/:counrtyCode" component={Country} />
     </main>
   </div>
 )
