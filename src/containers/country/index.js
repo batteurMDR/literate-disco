@@ -19,12 +19,12 @@ export default class Country extends Component {
     }
 
     componentDidMount() {
-        Axios.get("http://172.16.7.232:5000/api/country_code/" + this.countryCode).then((response) => {
+        Axios.get("/api/country_code/" + this.countryCode).then((response) => {
             this.setState({countryId: response.data.id});
-            Axios.get("http://172.16.7.232:5000/api/warehouses/" + response.data.id).then((response) => {
+            Axios.get("/api/warehouses/" + response.data.id).then((response) => {
                 this.setState({warehouses: response.data});
             });
-            Axios.get("http://172.16.7.232:5000/api/order_items/" + response.data.id).then((response) => {
+            Axios.get("/api/order_items/" + response.data.id).then((response) => {
                 this.setState({orders: response.data});
             });
         });

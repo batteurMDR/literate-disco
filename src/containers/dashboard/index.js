@@ -16,10 +16,10 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
-    Axios.get('http://172.16.7.232:5000/api/global_income').then((response) => {
+    Axios.get('/api/global_income').then((response) => {
       this.setState({turnover: response.data});
     });
-    Axios.get('http://172.16.7.232:5000/api/warehouses').then((response) => {
+    Axios.get('/api/warehouses').then((response) => {
       this.setState({warehouses: response.data});
     });
   }
