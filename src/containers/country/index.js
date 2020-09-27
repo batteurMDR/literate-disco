@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Chart } from "react-google-charts"
 import Axios from 'axios'
 import { Link } from 'react-router-dom';
-import {API_URL} from '../../constants';
 
 export default class Country extends Component {
 
@@ -21,15 +20,12 @@ export default class Country extends Component {
     }
 
     componentDidMount() {
-        Axios.get("http://" + API_URL + "/api/country_code/" + this.countryCode).then((response) => {
+        Axios.get("/api/country_code/" + this.countryCode).then((response) => {
             this.setState({countryId: response.data.id});
-            Axios.get("http://" + API_URL + "/api/warehouses/" + response.data.id).then((response) => {
+            Axios.get("/api/warehouses/" + response.data.id).then((response) => {
                 this.setState({warehouses: response.data});
             });
-            Axios.get("http://" + API_URL + "/api/order_items/" + response.data.id).then((response) => {
-                this.setState({ordersByCategories: response.data});
-            });
-            Axios.get("http://" + API_URL + "/api/order_items").then((response) => {
+            Axios.get("/api/order_items/" + response.data.id).then((response) => {
                 this.setState({orders: response.data});
             });
         });

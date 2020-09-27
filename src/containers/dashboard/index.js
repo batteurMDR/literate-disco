@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Chart } from "react-google-charts"
 import Axios from 'axios'
-import {API_URL} from '../../constants';
 
 export default class Dashboard extends Component {
 
@@ -17,10 +16,10 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
-    Axios.get('http://' + API_URL + '/api/global_income').then((response) => {
+    Axios.get('/api/global_income').then((response) => {
       this.setState({turnover: response.data});
     });
-    Axios.get('http://' + API_URL + '/api/warehouses').then((response) => {
+    Axios.get('/api/warehouses').then((response) => {
       this.setState({warehouses: response.data});
     });
   }
